@@ -28,14 +28,14 @@ function App() {
           <div className="tasks-container-row">
             <TaskList
               title="Todos"
-              titleAlternative="You don't have any todos"
+              titleAlternative="No tasks yet"
               tasksList={todos}
               setTaskData={setTaskData}
             />
 
             <TaskList
               title="Completed"
-              titleAlternative="You don't have any completed tasks"
+              titleAlternative="No completed tasks yet"
               tasksList={completed}
               setTaskData={setTaskData}
             />

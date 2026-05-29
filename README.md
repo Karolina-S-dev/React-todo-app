@@ -46,7 +46,6 @@ Responsive layouts are implemented using Flexbox and CSS Media Queries.
 
 ```bash
 git clone https://github.com/Karolina-S-dev/React-todo-app.git
-cd task-manager
 npm install
 npm start
 ```
@@ -112,7 +111,6 @@ Układ automatycznie dostosowuje się do rozmiaru ekranu przy użyciu Flexbox or
 
 ```bash
 git clone https://github.com/Karolina-S-dev/React-todo-app.git
-cd task-manager
 npm install
 npm start
 ```
