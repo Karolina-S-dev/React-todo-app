@@ -56,9 +56,10 @@ const TaskCard = ({ task, setTaskData }) => {
             </p>
           </Modal>
           <div className="buttons">
+            {!task.completed? 
             <TaskCardButton type={"complete"} onClick={handleComplete}>
               Complete
-            </TaskCardButton>
+            </TaskCardButton> :null}
             <TaskCardButton type={"delete"} onClick={handleDelete}>
               Delete
             </TaskCardButton>
