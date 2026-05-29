@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# Task Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Task Manager Preview](./screenshots/task-manager.jpg)
 
-## Available Scripts
+A modern and fully responsive task management application built with React.
 
-In the project directory, you can run:
+The application allows users to create, organize, and manage daily tasks through an intuitive and user-friendly interface. Tasks can be categorized by priority, assigned a deadline, marked as completed, and viewed in a detailed modal window.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Create new tasks
+* Add task descriptions
+* Set task priority (Low, Medium, High)
+* Assign task deadlines
+* Mark tasks as completed
+* Delete tasks
+* View task details in a modal window
+* Form validation
+* Toast notifications
+* Fully responsive design
+* Modern dark-themed user interface
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+* React
+* JavaScript (ES6+)
+* CSS3
+* React Hooks (`useState`)
+* React Toastify
+* React DatePicker
+* React Icons
+* Ionicons
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Responsive Design
 
-### `npm run build`
+The application is fully responsive and optimized for:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Desktop
+* Laptop
+* Tablet
+* Mobile devices
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Responsive layouts are implemented using Flexbox and CSS Media Queries.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+```bash
+git clone https://github.com/Karolina-S-dev/React-todo-app.git
+cd task-manager
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## What I Learned
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+During this project I practiced:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* React component architecture
+* State management with React Hooks
+* Form handling and validation
+* Conditional rendering
+* Dynamic list rendering
+* Creating reusable components
+* Responsive web design
+* Integration of third-party libraries
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+# Task Manager 🇵🇱
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Nowoczesna i w pełni responsywna aplikacja do zarządzania zadaniami stworzona w React.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Aplikacja umożliwia tworzenie, organizowanie i zarządzanie codziennymi zadaniami za pomocą intuicyjnego interfejsu. Zadaniom można przypisywać priorytety, terminy realizacji, oznaczać je jako ukończone oraz przeglądać ich szczegóły w oknie modalnym.
 
-### Code Splitting
+## Funkcjonalności
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Dodawanie nowych zadań
+* Dodawanie opisu zadania
+* Ustawianie priorytetu (Niski, Średni, Wysoki)
+* Ustalanie terminu wykonania
+* Oznaczanie zadań jako ukończone
+* Usuwanie zadań
+* Podgląd szczegółów zadania
+* Walidacja formularza
+* Powiadomienia Toast
+* Responsywny interfejs użytkownika
+* Nowoczesny ciemny motyw
 
-### Analyzing the Bundle Size
+## Technologie
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* React
+* JavaScript (ES6+)
+* CSS3
+* React Hooks (`useState`)
+* React Toastify
+* React DatePicker
+* React Icons
+* Ionicons
 
-### Making a Progressive Web App
+## Responsywność
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Aplikacja została zoptymalizowana dla:
 
-### Advanced Configuration
+* komputerów stacjonarnych
+* laptopów
+* tabletów
+* urządzeń mobilnych
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Układ automatycznie dostosowuje się do rozmiaru ekranu przy użyciu Flexbox oraz Media Queries.
 
-### Deployment
+## Instalacja
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+git clone https://github.com/Karolina-S-dev/React-todo-app.git
+cd task-manager
+npm install
+npm start
+```
 
-### `npm run build` fails to minify
+## Czego nauczyłam się podczas projektu
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* budowy aplikacji w oparciu o komponenty React
+* zarządzania stanem za pomocą Hooków
+* obsługi formularzy i walidacji danych
+* renderowania warunkowego
+* dynamicznego renderowania list
+* tworzenia reużywalnych komponentów
+* projektowania responsywnych interfejsów
+* integracji bibliotek zewnętrznych
+
+
+## Autor
+
+**Karolina-S-dev**
