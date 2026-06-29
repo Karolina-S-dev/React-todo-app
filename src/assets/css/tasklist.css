@@ -73,7 +73,6 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  
 }
 
 .btn ion-icon {
@@ -121,7 +120,7 @@
   background-color: #b341414a;
   color: #ef1f1f;
   border: 1px solid #f02b2b4c;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 /* ---------------MODAL------------------- */
@@ -199,4 +198,25 @@
 .priority-high {
   background-color: #a22deb50;
   color: #bd74eafa;
+}
+
+.search-input {
+  background-color: #0b1739;
+  border: 2px solid #1e293b;
+  color: #ffffff;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin: 0 4rem;
+  text-indent: 4px;
+  font-size: 1.3rem;
+}
+
+.search-input::placeholder {
+  color: #919fc8;
+}
+
+.search-input:focus {
+  background-color: #0f1c42;
 }

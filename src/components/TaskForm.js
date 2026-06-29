@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/css/taskform.css";
 
+
 const TaskForm = ({ setTaskData }) => {
   //odbiera funkcje setTaskData z App.js
   const [formData, setFormData] = useState({
@@ -91,7 +92,7 @@ const TaskForm = ({ setTaskData }) => {
           value={formData.title}
           /*React renderuje i value=nowy formData.title*/
           onChange={(event) => {
-            console.log(event.target.value);
+            console.log(typeof formData.title)
             setFormData((prev) => ({
               ...prev,
               // desc: prev.desc,

@@ -1,4 +1,4 @@
-export const taskData = [
+export const mockTasks = [
   {
     title: "Walk the dog",
     desc: null,
