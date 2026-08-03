@@ -2,9 +2,13 @@ import { useState } from "react";
 import { priorities } from "../utils/constants";
 import Modal from "./Modal";
 import TaskCardButton from "./TaskCardButton";
+import { useTaskContext } from "../context/taskContext";
+import EditModal from "./EditModal";
 
-const TaskCard = ({ task, setTaskData }) => {
+const TaskCard = ({ task }) => {
+  const { setTaskData } = useTaskContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleClick = () => {
     setIsModalOpen(true);
@@ -56,10 +60,18 @@ const TaskCard = ({ task, setTaskData }) => {
             </p>
           </Modal>
           <div className="buttons">
-            {!task.completed? 
-            <TaskCardButton type={"complete"} onClick={handleComplete}>
-              Complete
-            </TaskCardButton> :null}
+            <TaskCardButton
+              type={"edit"}
+              onClick={() => setIsEditModalOpen(true)}
+            >
+              Edit
+            </TaskCardButton>
+            <EditModal isEditModalOpen={isEditModalOpen} setIsEditModalOpen={setIsEditModalOpen} task={task}></EditModal>
+            {!task.completed ? (
+              <TaskCardButton type={"complete"} onClick={handleComplete}>
+                Complete
+              </TaskCardButton>
+            ) : null}
             <TaskCardButton type={"delete"} onClick={handleDelete}>
               Delete
             </TaskCardButton>

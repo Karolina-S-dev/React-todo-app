@@ -7,11 +7,11 @@ import "./assets/css/taskform.css";
 import "./assets/css/queries.css";
 import TaskForm from "./components/TaskForm";
 import { useEffect, useState } from "react";
+import { useTaskContext } from "./context/taskContext";
 
 function App() {
-  // state
-  const [taskData, setTaskData] = useState([]);
-  const [searchTerm, setSarchTerm] = useState("");
+  const {taskData, setTaskData} = useTaskContext();
+  const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [searchedTasks, setSearchedTasks] = useState([]);
 
@@ -31,7 +31,7 @@ function App() {
     : filteredSearchedCompleted;
 
   const handleChange = (e) => {
-    setSarchTerm(e.target.value);
+    setSearchTerm(e.target.value);
   };
 
   //debouncing
@@ -50,7 +50,7 @@ function App() {
       setSearchedTasks(filteredTasks);
     };
     handleFilter();
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, taskData]);
 
   return (
     <>
@@ -58,7 +58,7 @@ function App() {
         <h1>Task Manager</h1>
       </header>
       <div className="content-container">
-        <TaskForm setTaskData={setTaskData} />
+        <TaskForm/>
         <div className="task-lists-container">
           <h2>YOUR TASKS</h2>
           <h3>Manage and organize your tasks efficiently</h3>
@@ -74,7 +74,6 @@ function App() {
               title="Todos"
               titleAlternative="No tasks yet"
               tasksList={taskData ? dependendTodos : null}
-              setTaskData={setTaskData}
             />
 
             <TaskList

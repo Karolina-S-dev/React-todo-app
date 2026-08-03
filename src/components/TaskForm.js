@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskCardButton from "./TaskCardButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -6,9 +6,10 @@ import { FiCalendar } from "react-icons/fi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/css/taskform.css";
+import { useTaskContext } from "../context/taskContext";
 
-
-const TaskForm = ({ setTaskData }) => {
+const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
+  const { taskData, setTaskData } = useTaskContext();
   //odbiera funkcje setTaskData z App.js
   const [formData, setFormData] = useState({
     title: "",
@@ -16,6 +17,38 @@ const TaskForm = ({ setTaskData }) => {
     priority: 0,
     complete_until_date: null,
   });
+
+  // task edition
+
+  useEffect(() => {
+    if (!isFormEdit) return;
+
+    taskData.map(
+      (data) =>
+        data.created_date.getTime() === task.created_date.getTime() &&
+        setFormData(task),
+    );
+  }, [taskData, isFormEdit, task]);
+
+  const handleSaveTask = (e) => {
+    e.preventDefault();
+    setTaskData((prevTasks) =>
+      prevTasks.map((taskItem) =>
+        taskItem.created_date.getTime() === task.created_date.getTime()
+          ? {
+              ...taskItem,
+              title: formData.title,
+              desc: formData.desc,
+              priority: formData.priority,
+              complete_until_date: formData.complete_until_date,
+            }
+          : taskItem,
+      ),
+    );
+    setIsEditModalOpen(false);
+  };
+
+  //-------------------------
 
   // const [value, setValue] = useState(""); //example
 
@@ -75,7 +108,7 @@ const TaskForm = ({ setTaskData }) => {
     <form className="task-form">
       <div className="task-form-title">
         <ion-icon name="add-circle-outline"></ion-icon>
-        <p>ADD NEW TASK</p>
+        {isFormEdit ? <p>EDIT TASK</p> : <p>ADD NEW TASK</p>}
       </div>
 
       {/* -------TITLE------ */}
@@ -92,7 +125,7 @@ const TaskForm = ({ setTaskData }) => {
           value={formData.title}
           /*React renderuje i value=nowy formData.title*/
           onChange={(event) => {
-            console.log(typeof formData.title)
+            console.log(typeof formData.title);
             setFormData((prev) => ({
               ...prev,
               // desc: prev.desc,
@@ -167,10 +200,17 @@ const TaskForm = ({ setTaskData }) => {
           <FiCalendar className="calendar-icon" />
         </div>
       </div>
+      {isFormEdit && <TaskCardButton type="addTask">Restore</TaskCardButton>}
 
-      <TaskCardButton type="addTask" onClick={handleSubmit}>
-        + Add task
-      </TaskCardButton>
+      {isFormEdit ? (
+        <TaskCardButton type="addTask" onClick={handleSaveTask}>
+          Save changes
+        </TaskCardButton>
+      ) : (
+        <TaskCardButton type="addTask" onClick={handleSubmit}>
+          + Add task
+        </TaskCardButton>
+      )}
     </form>
   );
 };
