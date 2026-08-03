@@ -24,7 +24,7 @@ const TaskCardButton = ({ type, children, onClick }) => {
         </button>
       ) : null}
       {type === "edit" ? (
-        <button className="btn " onClick={onClick}>
+        <button className="btn btn-edit" onClick={onClick}>
           {children}
         </button>
       ) : null}

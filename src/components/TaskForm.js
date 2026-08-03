@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TaskCardButton from "./TaskCardButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,7 +19,6 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
   });
 
   // task edition
-
   useEffect(() => {
     if (!isFormEdit) return;
 
@@ -30,7 +29,7 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
     );
   }, [taskData, isFormEdit, task]);
 
-  const handleSaveTask = (e) => {
+  const handleSaveChanges = (e) => {
     e.preventDefault();
     setTaskData((prevTasks) =>
       prevTasks.map((taskItem) =>
@@ -46,6 +45,20 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
       ),
     );
     setIsEditModalOpen(false);
+  };
+
+  // task restore
+  const refTaskData = useRef(taskData);
+
+  const handleRestore = (e) => {
+    e.preventDefault();
+    setTaskData((prevTasks) =>
+      prevTasks.map((taskItem) =>
+        taskItem.created_date.getTime() === task.created_date.getTime()
+          ? { ...taskItem, refTaskData }
+          : taskItem,
+      ),
+    );
   };
 
   //-------------------------
@@ -200,10 +213,14 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
           <FiCalendar className="calendar-icon" />
         </div>
       </div>
-      {isFormEdit && <TaskCardButton type="addTask">Restore</TaskCardButton>}
+      {isFormEdit && (
+        <TaskCardButton type="addTask" onClick={handleRestore}>
+          Restore
+        </TaskCardButton>
+      )}
 
       {isFormEdit ? (
-        <TaskCardButton type="addTask" onClick={handleSaveTask}>
+        <TaskCardButton type="addTask" onClick={handleSaveChanges}>
           Save changes
         </TaskCardButton>
       ) : (
