@@ -218,7 +218,6 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
           Restore
         </TaskCardButton>
       )}
-
       {isFormEdit ? (
         <TaskCardButton type="addTask" onClick={handleSaveChanges}>
           Save changes

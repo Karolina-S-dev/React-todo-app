@@ -2,7 +2,6 @@ import { useTaskContext } from "../context/taskContext";
 import TaskCard from "./TaskCard";
 
 const TaskList = ({ title, titleAlternative, tasksList }) => {
-  const { setTaskData } = useTaskContext();
   return (
     <div className="task-list">
       {tasksList.length === 0 ? <h2>{titleAlternative}</h2> : <h2>{title}</h2>}
