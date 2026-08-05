@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useTaskContext } from "./context/taskContext";
 
 function App() {
-  const {taskData, setTaskData} = useTaskContext();
+  const { taskData, setTaskData } = useTaskContext();
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [searchedTasks, setSearchedTasks] = useState([]);
@@ -58,7 +58,7 @@ function App() {
         <h1>Task Manager</h1>
       </header>
       <div className="content-container">
-        <TaskForm/>
+        <TaskForm />
         <div className="task-lists-container">
           <h2>YOUR TASKS</h2>
           <h3>Manage and organize your tasks efficiently</h3>
