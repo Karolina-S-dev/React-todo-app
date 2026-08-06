@@ -1,5 +1,7 @@
+import { createPortal } from "react-dom";
+
 const Modal = ({ isOpen, onClose, children }) => {
-  return (
+  return createPortal(
     <>
       {isOpen ? (
         <div className="modal-overlay">
@@ -13,7 +15,8 @@ const Modal = ({ isOpen, onClose, children }) => {
           </div>
         </div>
       ) : null}
-    </>
+    </>,
+    document.body,
   );
 };
 

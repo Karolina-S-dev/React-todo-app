@@ -8,8 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "../assets/css/taskform.css";
 import { useTaskContext } from "../context/taskContext";
 
-const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
-  const { taskData, setTaskData } = useTaskContext();
+const TaskForm = ({ task, setIsEditModalOpen }) => {
+  const { setTaskData } = useTaskContext();
   //odbiera funkcje setTaskData z App.js
   const [formData, setFormData] = useState({
     title: "",
@@ -18,16 +18,15 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
     complete_until_date: null,
   });
 
+  // task restore
+  const refTaskData = useRef(null);
+
   // task edition
   useEffect(() => {
-    if (!isFormEdit) return;
-
-    taskData.map(
-      (data) =>
-        data.created_date.getTime() === task.created_date.getTime() &&
-        setFormData(task),
-    );
-  }, [taskData, isFormEdit, task]);
+    if (!task) return;
+    setFormData(task);
+    refTaskData.current = task;
+  }, [task]);
 
   const handleSaveChanges = (e) => {
     e.preventDefault();
@@ -47,18 +46,9 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
     setIsEditModalOpen(false);
   };
 
-  // task restore
-  const refTaskData = useRef(taskData);
-
   const handleRestore = (e) => {
     e.preventDefault();
-    setTaskData((prevTasks) =>
-      prevTasks.map((taskItem) =>
-        taskItem.created_date.getTime() === task.created_date.getTime()
-          ? { ...taskItem, refTaskData }
-          : taskItem,
-      ),
-    );
+    setFormData(refTaskData.current);
   };
 
   //-------------------------
@@ -121,7 +111,7 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
     <form className="task-form">
       <div className="task-form-title">
         <ion-icon name="add-circle-outline"></ion-icon>
-        {isFormEdit ? <p>EDIT TASK</p> : <p>ADD NEW TASK</p>}
+        {task ? <p>EDIT TASK</p> : <p>ADD NEW TASK</p>}
       </div>
 
       {/* -------TITLE------ */}
@@ -213,12 +203,12 @@ const TaskForm = ({ isFormEdit, task, setIsEditModalOpen }) => {
           <FiCalendar className="calendar-icon" />
         </div>
       </div>
-      {isFormEdit && (
+      {task && (
         <TaskCardButton type="addTask" onClick={handleRestore}>
           Restore
         </TaskCardButton>
       )}
-      {isFormEdit ? (
+      {task ? (
         <TaskCardButton type="addTask" onClick={handleSaveChanges}>
           Save changes
         </TaskCardButton>

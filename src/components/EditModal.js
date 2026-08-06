@@ -1,7 +1,10 @@
+import { createPortal } from "react-dom";
 import TaskForm from "./TaskForm";
 
 const EditModal = ({ isEditModalOpen, setIsEditModalOpen, task }) => {
-  return (
+  console.log(task);
+
+  return createPortal(
     <>
       {isEditModalOpen && (
         <div className="edit-modal-wrapper">
@@ -10,11 +13,12 @@ const EditModal = ({ isEditModalOpen, setIsEditModalOpen, task }) => {
               name="close-outline"
               onclick={() => setIsEditModalOpen(false)}
             ></ion-icon>
-            <TaskForm isFormEdit task={task} setIsEditModalOpen={setIsEditModalOpen}></TaskForm>
+            <TaskForm task={task} setIsEditModalOpen={setIsEditModalOpen} />
           </div>
         </div>
       )}
-    </>
+    </>,
+    document.body,
   );
 };
 
