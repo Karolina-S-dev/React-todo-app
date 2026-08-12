@@ -10,6 +10,10 @@
   border: 1px solid #172130;
 }
 
+.task-form-border-none{
+  border: none;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;

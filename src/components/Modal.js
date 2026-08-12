@@ -1,15 +1,14 @@
 import { createPortal } from "react-dom";
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ activeModal, setActiveModal, children, className = "" }) => {
   return createPortal(
     <>
-      {isOpen ? (
+      {activeModal ? (
         <div className="modal-overlay">
-          <div className="modal">
+          <div className={className}>
             <ion-icon
-              className="closing-x"
               name="close-outline"
-              onClick={onClose}
+              onClick={() => setActiveModal(null)}
             ></ion-icon>
             <div className="modal-content">{children}</div>
           </div>

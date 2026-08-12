@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../assets/css/taskform.css";
 import { useTaskContext } from "../context/taskContext";
 
-const TaskForm = ({ task, setIsEditModalOpen }) => {
+const TaskForm = ({ task, setActiveModal, activeModal }) => {
   const { setTaskData } = useTaskContext();
   //odbiera funkcje setTaskData z App.js
   const [formData, setFormData] = useState({
@@ -43,7 +43,7 @@ const TaskForm = ({ task, setIsEditModalOpen }) => {
           : taskItem,
       ),
     );
-    setIsEditModalOpen(false);
+    setActiveModal(false);
   };
 
   const handleRestore = (e) => {
@@ -108,7 +108,7 @@ const TaskForm = ({ task, setIsEditModalOpen }) => {
   };
 
   return (
-    <form className="task-form">
+    <form className={`task-form ${task ? "task-form-border-none" : null}`}>
       <div className="task-form-title">
         <ion-icon name="add-circle-outline"></ion-icon>
         {task ? <p>EDIT TASK</p> : <p>ADD NEW TASK</p>}
